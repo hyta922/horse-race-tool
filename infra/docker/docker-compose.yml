@@ -1,0 +1,29 @@
+# Create web, ap, db server
+services:
+  webserver:
+    # configuration for web server
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ../web/ngix/conf.d:/etc/nginx/conf.d
+      # - ../web/html:/usr/share/nginx/html
+    
+  # apserver:
+  #   # configuration for application server
+  #   image: ubuntu:latest
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./app:/var/www/html
+
+  # dbserver:
+  #   # configuration for database server
+  #   image: mysql:latest
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_DATABASE: mydb
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
