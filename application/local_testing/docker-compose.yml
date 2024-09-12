@@ -1,0 +1,24 @@
+version: '3'
+services:
+  backend.my-racing-tool:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+    ports:
+      - 8000:80
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - backend.my-racing-tool
+    volumes:
+      - ../frontend:/app
+      - node_modules:/app/node_modules
+volumes:
+  node_modules:
